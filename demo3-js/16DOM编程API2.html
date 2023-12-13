@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        1 获得document  dom树
+            window.document
+        2 从document中获取要操作的元素
+            1. 直接获取
+                var el1 =document.getElementById("username") // 根据元素的id值获取页面上唯一的一个元素
+                var els =document.getElementsByTagName("input") // 根据元素的标签名获取多个同名元素
+                var els =document.getElementsByName("aaa") // 根据元素的name属性值获得多个元素
+                var els =document.getElementsByClassName("a") // 根据元素的class属性值获得多个元素
+            2. 间接获取
+                var cs=div01.children // 通过父元素获取全部的子元素
+                var firstChild =div01.firstElementChild  // 通过父元素获取第一个子元素
+                var lastChild = div01.lastElementChild   // 通过父元素获取最后一个子元素
+                var parent = pinput.parentElement  // 通过子元素获取父元素
+                var pElement = pinput.previousElementSibling // 获取前面的第一个元素
+                var nElement = pinput.nextElementSibling // 获取后面的第一个元素
+        3 对元素进行操作
+            1. 操作元素的属性   元素名.属性名=""
+            2. 操作元素的样式   元素名.style.样式名=""  样式名"-" 要进行驼峰转换
+            3. 操作元素的文本   元素名.innerText   只识别文本
+                               元素名.innerHTML   同时可以识别html代码 
+            4. 增删元素   
+        */
+        function changeAttribute() {
+            var in1 = document.getElementById("in1")
+            // 语法 元素.属性名=""
+            // 获得属性值
+            console.log(in1.type)
+            console.log(in1.value)
+            // 修改属性值
+            in1.type = "button"
+            in1.value = "嗨"
+        }
+        function changeStyle() {
+            var in1 = document.getElementById("in1")
+            // 语法  元素.style.样式名=""   原始样式名中的"-"符号 要转换驼峰式  background-color > backgroundColor
+            in1.style.color = "green"
+            in1.style.borderRadius = "5px"
+
+        }
+        function changeText() {
+            var div01 = document.getElementById("div01")
+            /* 
+            语法  元素名.innerText   只识别文本
+                  元素名.innerHTML   同时可以识别html代码
+            */
+            console.log(div01.innerText)
+            div01.innerHTML = "<h1>嗨</h1>"
+        }
+
+    </script>
+    <style>
+        #in1 {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="in1" type="text" value="hello">
+    <div id="div01">
+        hello
+    </div>
+
+    <hr>
+    <button onclick="changeAttribute()">操作属性</button>
+    <button onclick="changeStyle()">操作样式</button>
+    <button onclick="changeText()">操作文本</button>
+
+</body>
+
+</html>

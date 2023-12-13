@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        /* function sum(a, b) {
+            return a + b
+        } */
+        /* var sum = function (a, b) {
+            return a + b
+        } */
+
+        var sum = function (a, b) {
+            return a + b
+        }
+        var result = sum(10, 20)
+        console.log(result)
+
+        // 方法参数可以是方法
+        function add(getSum) {
+            return getSum(30, 40)
+        }
+
+        var result = add(sum)
+        console.log(result)
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

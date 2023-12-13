@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // let 和var的差别
+        // 1、let 不能重复声明
+        /* var i = 10;
+        var i = 12;
+
+        let j = 10;
+        let j = 12; */
+
+        // 2、let有块级作用域，非函数的花括号遇见let会有块级作用域，也就是只能在花括号里面访问。
+        /* {
+            var i = 10;
+            let j = 12;
+            console.log(j)
+        }
+        console.log(i)
+        console.log(j) */
+
+        // 3、let不会预解析进行变量提升
+        /* console.log(i)
+        var i = 10;
+        console.log(j)
+        let j = 12; */
+        // 4、let 定义的全局变量不会作为window的属性
+        /* var a = 10;
+        let b = 10;
+        console.log(window.a)
+        console.log(window.b) */
+        // 5、let在es6中推荐优先使用
+
+
+        // 6 const 就是不可修改的let 有点像final修饰的变量
+        /* let a = 10;
+        a = 12;
+
+        // const b = 10;
+        // b = 12
+
+        // const b; // Missing initializer in const declaration
+        // b =10;
+
+        const PI = 3.14; */
+
+        /* const techers = ["张老师","王老师","李老师"]
+        // techers = ["",""]; // 01let和const.html:55 Uncaught TypeError: Assignment to constant variable.
+        techers.push("陈老师") // 可以 */
+
+        /* 模版字符串   字符串换行和 字符串拼接问题 */
+
+        let city = "北京"
+        let info = "<ul>" +
+            "<li>" + city + "</li>" +
+            "<li></li>" +
+            +"</ul>"
+        console.log(info)
+
+        let str = `<ul>
+                        <li></li>
+                        <li>${city}</li>
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>`
+
+        console.log(str)
+
+    </script>
+</head>
+
+<body>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        // 第一种创建对象方式
+        var person = new Object();
+        // 给对象添加属性并赋值
+        person.name = "张小明";
+        person.age = 10;
+        // 给对象添加功能函数
+        person.eat = function () {
+            console.log(this.age + "岁的" + this.name + "喜欢吃:")
+
+        }
+        //获得对象属性值
+        console.log(person.name)
+        console.log(person.age)
+        //调用对象方法
+        person.eat();
+
+        // 第二种创建对象方式
+        var person = {
+            "name": "张小明",
+            "age": 11,
+            "eat": function () {
+                console.log(this.age + "岁的" + this.name + "喜欢吃:")
+            }
+        }
+        //获得对象属性值
+        console.log(person.name)
+        console.log(person.age)
+        //调用对象方法
+        person.eat();
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

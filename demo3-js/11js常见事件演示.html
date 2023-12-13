@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function fun1() {
+            console.log("单击了1")
+        }
+        function fun2() {
+            console.log("单击了2")
+        }
+        function fun3() {
+            console.log("双击了")
+        }
+        function fun4() {
+            console.log("鼠标悬停了")
+        }
+        function fun5() {
+            console.log("鼠标移动了")
+        }
+        function fun6() {
+            console.log("鼠标离开了")
+        }
+        function fun7() {
+            console.log("按键按下了")
+        }
+        function fun8() {
+            console.log("按键抬起了")
+        }
+
+        // form表单
+        /*
+        弹窗的三种方式：
+            alert()信息提示框
+            prompt()信息输入框
+            confirm()信息确认框
+        */
+        function testFocus() {
+            console.log("获得焦点了")
+        }
+        function testBlur() {
+            console.log("失去焦点了")
+        }
+        function testChange(value) {
+            console.log("表单内容发生改变了：" + value)
+        }
+        function testChange2(value) {
+            console.log("select发生改变了：" + value)
+        }
+
+
+        function testSubmit() {
+            // alert("表单要提交了")
+            var flag = confirm("确定要提交吗？")
+            if (!flag) {
+                // 在这里我们有机会阻止表单的提交
+                event.preventDefault() // 阻止组件的默认行为
+            }
+        }
+        function testReset() {
+            alert("表单要清空了")
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <form action="01js引入方式.html" method="get" onsubmit="testSubmit()" onreset="testReset()">
+        用户昵称：<input type="text" name="realName" onfocus="testFocus()" onblur="testBlur()"
+            onchange="testChange(this.value)"><br>
+        登录账号：<input type="text" name="loginName"><br>
+        选择籍贯：
+            <select onchange="testChange2(this.value)">
+                <!-- 不设置value属性，默认为标签中间的内容 北京 -->
+                <option value="1">北京</option>
+                <option value="1">上海</option>
+                <option>广州</option>
+            </select><br>
+        <input type="submit" value="注册">
+        <input type="reset" value="清空">
+
+    </form>
+
+
+    <hr>
+    <input type="button" value="按钮" onclick="fun1(),fun2()" ondblclick="fun3()">
+    <hr>
+    <img src="img/logo.jpg" width="500px" onmouseover="fun4()" onmousemove="fun5()" onmouseleave="fun6()">
+    <hr>
+    <input type="text" onkeydown="fun7()" onkeyup="fun8()">
+
+</body>
+
+</html>

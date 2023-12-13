@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // document.write('<h1>张三</h1>')
+        // document.write('张三')
+        // document.write('<hr>')
+
+        // while 循环
+        // var i = 1;
+        // while (i <= 9) {
+        //     var j = 1
+        //     while (j <= i) {
+        //         document.write(j + "*" + i + "=" + j * i + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+        //         j++
+        //     }
+        //     document.write("<hr>")
+        //     i++
+        // }
+
+        // for 循环
+        // for (var i = 1;i <= 9; i++) {
+        //     for (var j = 1;j <= i;j++) {
+        //         document.write(j + "*" + i + "=" + j * i + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;")
+        //     }
+        //     document.write("<hr>")
+        // }
+
+        var arr = ["北京", "上海", "广州"]
+        document.write("<ul>")
+        for (var index = 0; index < arr.length; index++) {
+            document.write("<li>" + arr[index] + "</li>")
+        }
+        document.write("</ul>")
+
+        document.write("<hr>")
+
+        // foreach
+        document.write("<ul>")
+        for (var index in arr) {
+            // document.write("<li>" + index + "</li>") // 打印的为索引值
+            document.write("<li>" + arr[index] + "</li>") // 打印的为索引对应的值
+        }
+        document.write("</ul>")
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

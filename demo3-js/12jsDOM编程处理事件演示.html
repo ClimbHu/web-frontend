@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            // 为div1绑定事件
+            var div = document.getElementById("div1")
+            div.onclick = function () {
+                div.style.backgroundColor="red"
+            }
+
+            // 通过dom获得要操作的元素
+            var btn = document.getElementById("btn1")
+            // 绑定一个单击事件
+            btn.onclick = function () {
+                alert("按钮点击了")
+                // 通过dom编程触发事件，相当于某些事件发生了
+                // 通过dom编程触发div的单击事件
+                div.onclick()
+            }
+        }
+    </script>
+    <style>
+        .div {
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="btn1" type="button" value="按钮">
+    <div id="div1" class="div"></div>
+    <a href="13jsBOM编程好常见API.html">13</a>
+
+</body>
+
+</html>

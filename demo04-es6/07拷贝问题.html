@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let arr = [1,2,3]
+        let person ={name:"张三"}
+
+        /* 浅拷贝 */
+        /* let arr2 = arr
+        arr[0]=200
+        console.log(arr2)
+
+        let person2 = person
+        person.name="李四"
+        console.log(person2.name) */
+
+        /* 深拷贝 */
+        let arr2 = [...arr]
+        arr[0]=200
+        console.log(arr2)
+
+        // let person2 = {...person} 通过JSON和字符串的转换形成一个新的对象
+        let person2 = JSON.parse(JSON.stringify(person))
+        person.name="李四"
+        console.log(person2.name)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        class Person {
+            // 属性
+            #n
+            age
+            // getter   setter方法
+            get name() {
+                console.log("getter")
+                // return this.n
+                return this.#n
+            }
+            set name(name) {
+                console.log("setter")
+                // this.n = name
+                this.#n = name
+            }
+            // 实例方法
+            eat(food) {
+                console.log(`${this.age}岁的${this.#n}正在吃${food}`)
+            }
+            // 静态方法
+            static sum(a, b) {
+                return a + b
+            }
+            // 构造器
+            constructor(name, age) {
+                this.#n = name
+                this.age = age
+            }
+        }
+        /* let person = new Person("小明", 20)
+        // person.name = "张三"
+        // person.age = 18
+        console.log(person.n)
+        person.eat("火锅")
+        console.log(Person.sum(10, 20)) */
+
+        // 访问私有属性
+        /* let person = new Person("小明", 20)
+        console.log(person.name) */
+
+        /* 对象继承 */
+        class Student extends Person {
+            score
+            study() {
+                console.log(`${this.age}岁的${this.name}正在努力学习，考了${this.score}分`)
+            }
+            constructor(name, age, score) {
+                super(name, age)
+                this.score = score
+            }
+        }
+
+        let stu = new Student("小黑", 7, 100)
+        stu.study()
+
+    </script>
+</head>
+
+<body>
+</body>
+</html>

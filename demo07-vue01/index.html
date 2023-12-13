@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- 导入vue的依赖，核心的Vue3的js文件 -->
+    <script src="./js/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h1 v-text="message" v-bind:style="colorStyle">hello vue</h1>
+        <h1>{{message}}</h1>
+
+        <button @click="fun1">change</button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            setup() {
+                // 定义数据 以变量 /对象形式
+                let message = "heelo2"
+                let headline = "vue"
+                let colorStyle = { "background-color": "yellow" }
+                function fun1() {
+                    alert("hello")
+                }
+
+                // 在return中返回的变量/方法 才能和HTML元素关联
+                return {
+                    message,
+                    headline,
+                    colorStyle,
+                    fun1
+                }
+            }
+        })
+        // 将app对象挂载在指定的元素上，被挂载的元素内部就可以通过vue框架实现数据的渲染了
+        app.mount("#app")
+    </script>
+</body>
+
+</html>

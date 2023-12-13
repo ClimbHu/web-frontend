@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 定义一个JSON串 */
+        var personStr = '{"name":"张小明","age":20,"girlFriend":{"name":"铁铃","age":23},"foods":["苹果","香蕉","橘子","葡萄"],"pets":[{"petName":"大黄","petType":"dog"},{"petName":"小花","petType":"cat"}]}'
+        console.log(personStr)
+        console.log(typeof personStr)
+        /* 将一个JSON串转换为对象 */
+        var person = JSON.parse(personStr);
+        console.log(person)
+        console.log(typeof person)
+        /* 获取对象属性值 */
+        console.log(person.name)
+        console.log(person.age)
+        console.log(person.girlFriend.name)
+        console.log(person.foods[1])
+        console.log(person.pets[1].petName)
+        console.log(person.pets[1].petType)
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

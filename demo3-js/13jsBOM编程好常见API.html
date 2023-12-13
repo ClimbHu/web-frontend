@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // window对象是由浏览器提供给我们使用的，无需自己new
+        // window. 可以省略不写
+        function testAlert() {
+            //普通信息提示框
+            window.alert("提示信息");
+        }
+        function testConfirm() {
+            //确认框
+            var con = confirm("确定要删除吗?");
+            if (con) {
+                alert("点击了确定")
+            } else {
+                alert("点击了取消")
+            }
+        }
+        function testPrompt() {
+            //信息输入对话框
+            var res = prompt("请输入昵称", "例如:张三");
+            alert("您输入的是:" + res)
+        }
+
+        // history对象
+        function funA() {
+            // 向前翻页
+            history.back()
+        }
+        function funB() {
+            // 向后翻页
+            history.forward()
+            // history.go(1) // 向前翻页
+        }
+
+        function funD() {
+            // 向 sessionStorage中存储数据
+            sessionStorage.setItem("keyA", "valueA")
+            // 向 localStorage中存储数据
+            localStorage.setItem("keyB", "valueB")
+        }
+        function funE() {
+            console.log(sessionStorage.getItem("keyA"))
+            console.log(localStorage.getItem("keyB"))
+        }
+        function funF() {
+            sessionStorage.removeItem("keyA")
+            localStorage.removeItem("keyB")
+        }
+        function myFunction() {
+            setTimeout(function () { alert("Hello"); }, 2000);
+        }
+    </script>
+    <script>
+        function goAtguigu() {
+            var flag = confirm("即将跳转到尚硅谷官网,本页信息即将丢失,确定吗?")
+            if (flag) {
+                // 通过BOM编程地址栏url切换
+                window.location.href = "http://www.atguigu.com"
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>点击按钮，2 秒后会弹出 "Hello"。</p>
+    <button onclick="myFunction()">点我</button>
+    <hr>
+    <button onclick="funD()">存储数据</button>
+    <button onclick="funE()">读取数据</button>
+    <button onclick="funF()">清楚数据</button>
+
+    <hr>
+    <button onclick="funA()">上一页</button>
+    <button onclick="funB()">下一页</button>
+    <a href="http://www.atguigu.com">尚硅谷</a>
+    <hr>
+
+    <input type="button" value="提示框" onclick="testAlert()" /> <br>
+    <input type="button" value="确认框" onclick="testConfirm()" /> <br>
+    <input type="button" value="对话框" onclick="testPrompt()" /> <br>
+
+    <input type="button" value="跳转到尚硅谷" onclick="goAtguigu()" /> <br>
+</body>
+
+</html>

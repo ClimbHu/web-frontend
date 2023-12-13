@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // rest 剩余的，解决剩余的参数接收问题
+        /* let fun1 = (a, b, c, d, ...arr) => {
+            console.log(a, b, c, d)
+            console.log(arr)
+        }
+
+        fun1(1, 2, 3, 4, 5, 6, 7) */
+
+        /* spread 展开 rest 在实参上的使用 */
+        /* let arr = [1, 2, 3]
+        // let info = ...arr // ... arr >> 1,2,3 这么写是错的，必须在调用方法时，作为实参使用
+        let fun1 = (a, b, c) => {
+            console.log(a, b, c)
+        }
+
+        fun1(arr) //[1, 2, 3],undefined,undefined
+        fun1(...arr) // 1 2 3 等价于 fun1(1, 2, 3)
+         */
+
+        // 快速合并数组
+        /* let a = [1, 2, 3]
+        let b = [4, 5, 6]
+        let c = [7, 8, 9]
+
+        let d = [...a, ...b, ...c] // (9) [1, 2, 3, 4, 5, 6, 7, 8, 9]
+        console.log(d) */
+
+        // 快速合并对象
+        let person1 = { name: "张三" }
+        let person2 = { age: "10" }
+        let person3 = { gender: "boy" }
+
+        let person = { ...person1, ...person2, ...person3 } // {name: '张三', age: '10', gender: 'boy'}
+        console.log(person)
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
