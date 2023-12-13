@@ -6,7 +6,7 @@ import { ref, reactive, toRef, toRefs } from "vue";
       在script标签中，操作ref的响应式数据需要通过 .value 的形式操作
       在template标签中，操作ref的响应式数据，无需使用 .value
   2 reactive函数  更适合对象
-      在script template 操作reactive响应式护具都直接使用对象名.属性名的方式即可
+      在script template 操作reactive响应式数据都直接使用对象名.属性名的方式即可
 */
 
 let counter = ref(10);

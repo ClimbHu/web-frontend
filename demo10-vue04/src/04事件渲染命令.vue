@@ -33,12 +33,13 @@ function fun4() {
     <button v-on:click="fun2()">+</button>
     <!-- 内联事件处理器 -->
     <button v-on:click="counter++">+</button>
-    <!-- 事件的修饰符 .once 事件只绑定一次 prevent 修饰符阻止组件的默认行为 -->
+    <!-- 事件的修饰符 .once 事件只绑定一次  -->
     <button v-on:click.once="counter++">+</button>
     <br />
     <h1>count的值是：{{ counter }}</h1>
     <br />
     <a href="http://www.atguigu.com" v-on:click="fun3($event)">尚硅谷</a><br>
+    <!-- prevent 修饰符阻止组件的默认行为 -->
     <a href="http://www.atguigu.com" v-on:click.prevent="fun4()">尚硅谷</a>
   </div>
 </template>
