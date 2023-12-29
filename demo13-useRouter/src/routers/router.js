@@ -40,9 +40,34 @@ const router = createRouter({
             path: '/update',
             component: Update
         },
-
-
     ]
 })
 
+// 设置全局前置守卫
+// 每次路由切换页面前，都会执行beforeEach的回调函数
+router.beforeEach(
+    (to, from, next) => {
+        /* 
+        from 上一个页面 从哪里来
+        to   下一个页面 到哪里去
+        next 放行的方法，只有执行了该方法，才会放行路由 类比 filterChain.doFilter()
+                next()         放行
+                next("/路径")  路径的重定向
+        */
+        console.log("beforeEach")
+        console.log(from.path)
+        console.log(to.path)
+        next()
+    }
+)
+
+// 设置全局后置守卫
+// 每次路由切换页面后，都会执行afterEach的回调函数
+router.afterEach(
+    (to, from) => {
+        console.log('afterEach')
+        // console.log(from.path)
+        // console.log(to.path)
+    }
+)
 export default router

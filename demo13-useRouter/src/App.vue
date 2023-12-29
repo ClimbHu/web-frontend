@@ -3,10 +3,12 @@ import { useRouter } from "vue-router";
 
 //创建动态路由对象
 let router = useRouter();
+// 编程式路由路径传参
 function showDetail(id, language) {
   // router.push(`/showDetail/${id}/${language}`);
   router.push({ path: `/showDetail/${id}/${language}` });
 }
+// 编程式路由键值对传参
 function showDetail2(param_id, param_language) {
   // router.push(`/showDetail2?id=${id}&language=${language}`)
   /*uri键值对参数,需要使用query */
