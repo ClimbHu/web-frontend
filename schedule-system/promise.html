@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 普通函数 */
+        /* function fun1() {
+            console.log("fun1 invoke")
+        }
+        console.log("code1 invoke")
+        // 函数的调用
+        fun1()
+        console.log("code2 invoke") */
+
+        /* 回调函数 */
+        // setTimeout(回调函数, 2000)
+        /* 
+        回调函数是一种基于事件的，自动调用的函数
+        回调函数其他的代码不会等待回调函数执行完毕
+
+        回调函数一种未来会执行的函数 回调函数以外的其他代码
+
+        生活案例：
+            邻家小美    那年你们都18岁
+            承诺：  10年之后，你未娶，她未嫁 你们结婚   >>> function(){}
+                1 进行中    其它代码继续执行
+                2 成功      准备好成功时处理的预案
+                3 失败      准备好失败时处理的预案
+        */
+        function fun1() {
+            setTimeout(function () { 
+                console.log("fun1 invoke")
+            }, 2000)
+        }
+        console.log("code1 invoke")
+        fun1()
+        console.log("code2 invoke")
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

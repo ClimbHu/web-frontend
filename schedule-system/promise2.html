@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        resolve 函数 在回调函数中如果调用resole方法，promise会由pending转换为resoled
+        reject  函数 在回调函数中如果调用reject方法，promise会由pending转换为rejected
+        */
+        let promise = new Promise(function (resolve, reject) {
+            console.log("function invoked")
+            // resolve("haha")
+            reject("oh no")
+        })
+
+        console.log("other code1")
+        // promise.then(等待promise对象状态发生改变事才会执行的代码)
+        /* let promise2 = promise.then(
+            function (value) {
+                // promise转换为resolved状态时，会执行的函数
+                console.log("promise success:" + value)
+            }
+            ,
+            // function (value) {
+                // promise转换为rejected状态时，会执行的函数
+                // console.log("promise fail:" + value)
+            // } 
+        )
+        promise2.catch(
+            function (value) {
+                // 当promise状态为rejected或promise出现异常时，会执行的函数
+                console.log("promise fail:" + value)
+            } 
+        ) */
+
+        /* 上述代码可合并为下列代码 */
+        promise.then(
+            function (value) {
+                // promise转换为resolved状态时，会执行的函数
+                console.log("promise success:" + value)
+            }
+        ).catch(
+            function (value) {
+                // 当promise状态为 rejected 或 promise出现 异常 时，会执行的函数
+                console.log("promise fail:" + value)
+            }
+        )
+
+        console.log("other code2")
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>

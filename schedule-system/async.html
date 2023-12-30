@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* 
+        async 帮助我们使用简洁的语法获得一个promise对象
+        let promise = new Promise(function(){})
+        async function(){}
+            1 async 用于标识函数 async函数返回的结果就是一个promise对象
+            2 方法如果正常return结果，promise状态就是resolved return后的结果就是成功状态的返回值
+            3 方法中出现了异常，则返回的promise就是一个失败的状态
+            4 async函数返回的结果如果是一个promise，则状态由内部promise决定
+
+        await 帮助我们获取promise成功状态的返回值的关键字
+            1 await右边如果是一个普通值。则直接返回该值 如果右边是promise，返回promise成功状态的结果
+                    let res = await "张三"
+                    let res = await Promise。resolve("张三")
+                        res = "张三"
+            2 await右边如果是一个失败状态的promise，那么await会直接抛出异常
+            3 await关键字必须在async修饰的函数中使用，saync函数中可以没有await
+            4 await后边的代码会等待await执行完毕继续运行
+
+        */
+        function fun1() {
+            return 10
+        }
+
+        async function fun2() {
+            // let res = await fun1()
+            try{
+                let res = await Promise.reject("something wrong")
+            } catch(e){
+                console.log("catch got:" + e)
+            }
+            console.log("await got:" + res)
+        }
+
+        fun2()
+
+
+
+        /* async function fun1() {
+            // return 10
+            // throw new Error("something wrong")
+            // let promise = Promise.resolve("heihei")
+            let promise = Promise.reject("oh no")
+            return promise
+        }
+
+        let promise = fun1()
+
+        promise.then(
+            function (value) {
+                console.log("success:" + value);
+            }
+        ).catch(
+            function (value) {
+                console.log("fail:" + value);
+            }
+        ) */
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
