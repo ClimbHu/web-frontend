@@ -1,5 +1,9 @@
 <script setup>
 import { ref, reactive } from "vue";
+import request from "../utils/request";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 // 响应式数据,保存用户输入的表单信息
 let loginUser = reactive({
@@ -38,6 +42,31 @@ function checkUserPwd() {
   userPwdMsg.value = "ok";
   return true;
 }
+
+// 登录
+async function login() {
+  // 表单数据格式都正确在提交请求
+  let flag1 = await checkUsername();
+  let flag2 = await checkUserPwd();
+
+  if (flag1 && flag2) {
+    // alert("校验通过，即将发送登录请求")
+    let { data } = await request.post("user/login", loginUser);
+    console.log(data);
+    if (data.code == 200) {
+      // 登录成功，跳转至详情页面
+      router.push("/showSchedule");
+    } else if(data.code == 503) {
+      alert("密码有误")
+    } else if(data.code == 501) {
+      alert("用户名有误")
+    } else {
+      alert("未知错误")
+    }
+  } else {
+    alert("校验失败，用户名或密码格式有误");
+  }
+}
 </script>
 
 <template>
@@ -70,7 +99,7 @@ function checkUserPwd() {
       </tr>
       <tr class="ltr">
         <td colspan="2" class="buttonContainer">
-          <input class="btn1" type="button" value="登录" />
+          <input class="btn1" type="button" @click="login()" value="登录" />
           <input class="btn1" type="button" value="重置" />
           <router-link to="/regist">
             <button class="btn1">去注册</button>

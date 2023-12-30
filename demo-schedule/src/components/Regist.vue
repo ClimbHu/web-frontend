@@ -1,5 +1,10 @@
 <script setup>
 import { ref, reactive } from "vue";
+// 导入发送请求的axios对象
+import request from "../utils/request";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 let registUser = reactive({
   username: "",
@@ -11,7 +16,7 @@ let usernameMsg = ref("");
 let userPwdMsg = ref("");
 let reUserPwdMsg = ref("");
 
-function checkUsername() {
+async function checkUsername() {
   // 定义正则
   let usernameReg = /^[a-zA-Z0-9]{5,10}$/;
   // 校验
@@ -20,6 +25,18 @@ function checkUsername() {
     usernameMsg.value = "格式有误";
     return false;
   }
+  // 校验用户名是否被占用
+  // await后面的方法都会等待await方法执行完毕后，才会继续执行后续代码
+  let { data } = await request.post(
+    `user/checkUsernameUsed?username=${registUser.username}`
+  );
+  // console.log(data);
+  // 判断业务码是否为200，200表示用户名可以使用，其他业务码表示用户名被占用
+  if (data.code != 200) {
+    usernameMsg.value = "用户名被占用";
+    return false;
+  }
+
   usernameMsg.value = "ok";
   return true;
 }
@@ -44,7 +61,7 @@ function checkReUserPwd() {
     reUserPwdMsg.value = "格式有误";
     return false;
   }
-  console.log(registUser.userPwd, reUserPwd.value);
+  // console.log(registUser.userPwd, reUserPwd.value);
   // 校验
   if (!(registUser.userPwd == reUserPwd.value)) {
     // if(!registUser.userPwd == reUserPwd.value) {
@@ -55,6 +72,29 @@ function checkReUserPwd() {
   }
   reUserPwdMsg.value = "ok";
   return true;
+}
+
+// 注册方法
+async function regist() {
+  // 校验所有输入框是否合法
+  let flag1 = await checkUsername();
+  let flag2 = await checkUserPwd();
+  let flag3 = await checkReUserPwd();
+
+  if (flag1 && flag2 && flag3) {
+    // alert("校验通过，即将发送注册请求")
+    let { data } = await request.post("user/regist", registUser);
+    // console.log(data);
+    if (data.code == 200) {
+      // 注册成功，跳转至登录页
+      alert("注册成功，快登录吧！");
+      router.push("/login");
+    } else {
+      alert("抱歉，用户名被抢注了");
+    }
+  } else {
+    alert("校验失败，请再次检查数据");
+  }
 }
 </script>
 
@@ -106,7 +146,7 @@ function checkReUserPwd() {
       </tr>
       <tr class="ltr">
         <td colspan="2" class="buttonContainer">
-          <input class="btn1" type="button" value="注册" />
+          <input class="btn1" type="button" @click="regist()" value="注册" />
           <input class="btn1" type="button" value="重置" />
           <router-link to="/login">
             <button class="btn1">去登录</button>
