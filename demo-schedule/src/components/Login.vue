@@ -3,6 +3,9 @@ import { ref, reactive } from "vue";
 import request from "../utils/request";
 import { useRouter } from "vue-router";
 
+import { defineUser } from "../store/userStore.js";
+let sysUser = defineUser();
+
 const router = useRouter();
 
 // 响应式数据,保存用户输入的表单信息
@@ -52,16 +55,19 @@ async function login() {
   if (flag1 && flag2) {
     // alert("校验通过，即将发送登录请求")
     let { data } = await request.post("user/login", loginUser);
-    console.log(data);
     if (data.code == 200) {
+      alert("登录成功");
+      // 获得登录的用户信息，更新到pinia中
+      sysUser.uid = data.data.loginUser.uid;
+      sysUser.username = data.data.loginUser.username;
       // 登录成功，跳转至详情页面
       router.push("/showSchedule");
-    } else if(data.code == 503) {
-      alert("密码有误")
-    } else if(data.code == 501) {
-      alert("用户名有误")
+    } else if (data.code == 503) {
+      alert("密码有误");
+    } else if (data.code == 501) {
+      alert("用户名有误");
     } else {
-      alert("未知错误")
+      alert("未知错误");
     }
   } else {
     alert("校验失败，用户名或密码格式有误");
